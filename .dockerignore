@@ -1,0 +1,16 @@
+.git
+.gitignore
+README.md
+.env.example
+.DS_Store
+.editorconfig
+*.log
+.idea
+.vscode
+storage/logs/*
+vendor
+coverage
+.npm
+.env
+bootstrap/cache/*
+ 
