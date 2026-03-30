@@ -3,9 +3,7 @@
 namespace App\Services;
 
 use App\Models\User;
-use Exception;
 use Illuminate\Support\Facades\Hash;
-use Symfony\Component\HttpFoundation\Request;
 
 class UserService
 {

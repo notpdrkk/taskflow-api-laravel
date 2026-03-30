@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class tag_task extends Model
+class Tag_task extends Model
 {
     //
 }
