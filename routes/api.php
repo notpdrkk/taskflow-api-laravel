@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\UserController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(UserController::class)->group(function () {
@@ -12,6 +11,8 @@ Route::controller(UserController::class)->group(function () {
     Route::delete('user/{id}', 'destroy');
 });
 
-Route::controller(ProjectController::class) -> group(function() {
+Route::controller(ProjectController::class)->group(function () {
     Route::get('projects', 'index');
+    Route::post('projects', 'store');
 });
+

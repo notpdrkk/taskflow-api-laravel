@@ -18,7 +18,7 @@ class ProjectController extends Controller
 
     public function index()
     {
-        return Project::all();
+        return $this->projectService->index();
     }
 
     /**
@@ -26,7 +26,8 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $project = $this->projectService->store($request);
+        return $project;
     }
 
     /**
