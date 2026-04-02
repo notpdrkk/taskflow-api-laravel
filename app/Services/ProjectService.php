@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Exceptions\InvalidJsonFormat;
 use App\Models\Project;
 use Illuminate\Http\Request;
-use App\Models\DTO\ProjectResponseDTO;
 
 class ProjectService
 {
@@ -13,7 +12,7 @@ class ProjectService
     public function index()
     {
         try {
-            return ProjectResponseDTO::all()->from(Project::all());
+            return Project::all();
         } catch (\Exception $e) {
             return response()->json(['error' => 'An unexpected error occurred'], 500);
         }
@@ -22,13 +21,16 @@ class ProjectService
     {
         try {
             $validated = $request->validate([
+                'user_id' => 'required|exists:users,id',
                 'name' => 'required|string|max:100',
                 'description' => 'nullable|max:255',
                 'status' => 'required',
                 'deadline' => 'nullable|date'
             ]);
+            
             $project = Project::create($validated);
-            return ProjectResponseDTO::from($project);
+            return json_encode($project, 201);
+
         } catch (InvalidJsonFormat $e) {
             return response()->json(['invalid json format' => $e->getMessage()], 400);
         } catch (\Exception $e) {
